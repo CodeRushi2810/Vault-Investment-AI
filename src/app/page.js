@@ -12,7 +12,8 @@ export default function Dashboard() {
     let reconnectTimeout = null;
 
     const connectWebSocket = () => {
-      ws = new WebSocket("ws://localhost:8000/ws");
+      const WS_URL = process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000/ws";
+      ws = new WebSocket(WS_URL);
 
       ws.onopen = () => {
         setStatus("🟢 Engine Live");
