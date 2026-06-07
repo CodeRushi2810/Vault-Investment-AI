@@ -219,7 +219,7 @@ export default function Dashboard() {
                   return b.confidence - a.confidence;
                 })
                 .map((s, i) => (
-                  <div key={i} className="py-4 border-b border-white/[0.05] flex flex-col">
+                  <div key={i} className={`py-4 border-b border-white/[0.05] flex flex-col ${s.trade_status === 'REJECTED' ? 'opacity-30 grayscale' : ''}`}>
                     <div className="flex justify-between items-start md:items-center mb-2 flex-col md:flex-row space-y-2 md:space-y-0">
                       
                       <div className="flex flex-col">
@@ -228,6 +228,11 @@ export default function Dashboard() {
                           <span className="text-[10px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400">
                             {s.action}
                           </span>
+                          {s.trade_status === 'REJECTED' && (
+                            <span className="text-[9px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">
+                              REJECTED BY RISK ENGINE
+                            </span>
+                          )}
                           <span className="text-[11px] font-bold text-emerald-400">{s.confidence || "--"}% CONF</span>
                           <span className="text-zinc-600">|</span>
                           <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wide">{s.recommended_strategy}</span>
@@ -290,7 +295,7 @@ export default function Dashboard() {
                 .filter(s => s.action.includes('SELL'))
                 .sort((a, b) => b.confidence - a.confidence)
                 .map((s, i) => (
-                  <div key={i} className="py-4 border-b border-white/[0.05] flex flex-col">
+                  <div key={i} className={`py-4 border-b border-white/[0.05] flex flex-col ${s.trade_status === 'REJECTED' ? 'opacity-30 grayscale' : ''}`}>
                     <div className="flex justify-between items-start md:items-center mb-2 flex-col md:flex-row space-y-2 md:space-y-0">
                       
                       <div className="flex flex-col">
@@ -299,6 +304,11 @@ export default function Dashboard() {
                           <span className="text-[10px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-400">
                             {s.action}
                           </span>
+                          {s.trade_status === 'REJECTED' && (
+                            <span className="text-[9px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">
+                              REJECTED BY RISK ENGINE
+                            </span>
+                          )}
                           <span className="text-[11px] font-bold text-rose-400">{s.confidence || "--"}% CONF</span>
                           <span className="text-zinc-600">|</span>
                           <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wide">{s.recommended_strategy}</span>
