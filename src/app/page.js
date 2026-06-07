@@ -243,7 +243,17 @@ export default function Dashboard() {
                              {s.abs_change > 0 ? '+' : ''}{s.abs_change?.toFixed(2) || "0.00"} ({s.pct_change?.toFixed(2) || "0.00"}%) 1D
                            </span>
                         </div>
-                        <span className="text-xs font-semibold text-zinc-400 uppercase block mt-1">TARGET ₹{s.target_price?.toFixed(2) || "0.00"}</span>
+                        <div className="flex flex-col md:items-end mt-1.5 space-y-0.5">
+                          {s.entry_price && <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">ENTRY: ₹{s.entry_price?.toFixed(2)}</span>}
+                          {s.stop_loss && <span className="text-[10px] font-bold text-rose-500/80 uppercase tracking-wider">SL: ₹{s.stop_loss?.toFixed(2)}</span>}
+                          <span className="text-xs font-semibold text-zinc-300 uppercase tracking-wide mt-1 block">
+                            TARGET: {s.previous_target ? (
+                              <><span className="line-through text-zinc-600 mr-1.5">₹{s.previous_target.toFixed(2)}</span> <span className="text-amber-400 animate-pulse">₹{s.target_price?.toFixed(2) || "0.00"}</span></>
+                            ) : (
+                              `₹${s.target_price?.toFixed(2) || "0.00"}`
+                            )}
+                          </span>
+                        </div>
                       </div>
 
                     </div>
@@ -304,7 +314,17 @@ export default function Dashboard() {
                              {s.abs_change > 0 ? '+' : ''}{s.abs_change?.toFixed(2) || "0.00"} ({s.pct_change?.toFixed(2) || "0.00"}%) 1D
                            </span>
                         </div>
-                        <span className="text-xs font-semibold text-zinc-400 uppercase block mt-1">TARGET ₹{s.target_price?.toFixed(2) || "0.00"}</span>
+                        <div className="flex flex-col md:items-end mt-1.5 space-y-0.5">
+                          {s.entry_price && <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">ENTRY: ₹{s.entry_price?.toFixed(2)}</span>}
+                          {s.stop_loss && <span className="text-[10px] font-bold text-rose-500/80 uppercase tracking-wider">SL: ₹{s.stop_loss?.toFixed(2)}</span>}
+                          <span className="text-xs font-semibold text-zinc-300 uppercase tracking-wide mt-1 block">
+                            TARGET: {s.previous_target ? (
+                              <><span className="line-through text-zinc-600 mr-1.5">₹{s.previous_target.toFixed(2)}</span> <span className="text-amber-400 animate-pulse">₹{s.target_price?.toFixed(2) || "0.00"}</span></>
+                            ) : (
+                              `₹${s.target_price?.toFixed(2) || "0.00"}`
+                            )}
+                          </span>
+                        </div>
                       </div>
 
                     </div>
